@@ -1,0 +1,56 @@
+PIPER SARATOGA HP II (VT-ETL)
+
+********** CG DATA **********
+
+Number of Passengers: 0
+CG (inches): 83.97888792354475
+CG_bar: 1.3674296066420923
+
+Number of Passengers: 1
+CG (inches): 84.3554756195044
+CG_bar: 1.3735615902594653
+
+Number of Passengers: 2
+CG (inches): 86.58122171945702
+CG_bar: 1.4098034504364452
+
+Number of Passengers: 3
+CG (inches): 91.08559322033899
+CG_bar: 1.4831482053137481
+
+Number of Passengers: 4
+CG (inches): 92.61661062542032
+CG_bar: 1.5080777867806825
+
+Number of Passengers: 5
+CG (inches): 94.36743119266056
+CG_bar: 1.536586426734832
+
+********** WING DATA **********
+
+Section 1
+
+section type: tapered
+span (inches): 27
+area (sq. inches): 1850.85
+mean aerodynamic chord of section 1 (inches): 68.59523462193046
+
+Section 2
+
+section type: rectangular
+span (inches): 56
+area (sq. inches): 3668.0
+mean aerodynamic chord of section 2 (inches): 65.5
+
+Section 3
+
+section type: tapered
+span (inches): 108.6
+area (sq. inches): 6027.299999999999
+mean aerodynamic chord of section 3 (inches): 56.10060060060061
+
+Mean Aerodynamic Chord of the entire wing (inches): 61.41368266097896
+
+********** FLIGHT CLIMB DATA **********
+
+Rates of climb (feet per second): [8.0, 7.407407407407407, 5.901639344262295]
