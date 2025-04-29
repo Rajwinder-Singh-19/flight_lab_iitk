@@ -162,6 +162,8 @@ def flight_calculations():
     plt.title("B.H.P. * V vs V^4", fontweight="bold")
     plt.xlabel("V ^ 4 (m^4/s^4)", fontweight="bold")
     plt.ylabel("B.H.P. * V (watt meter / s)", fontweight="bold")
+    plt.legend(["Original Data", "Linear Curve Fit"])
+    plt.text(7e6, 4.7e6, f"Slope: {slope: .4f}\nY Intercept: {y_intercept: .4f}",  fontweight = 'bold')
     plt.grid(True)
     plt.show()
 
