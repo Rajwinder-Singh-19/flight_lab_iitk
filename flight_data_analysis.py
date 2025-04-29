@@ -9,7 +9,7 @@ def linear_fit(x, slope, intercept):
     return x * slope + intercept
 
 
-def main():
+def flight_calculations():
     # Define Aircraft
     piper = Aircraft(name="Piper Saratoga HP II (VT-ETL)")
 
@@ -167,4 +167,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    flight_calculations()
