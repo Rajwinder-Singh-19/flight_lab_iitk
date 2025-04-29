@@ -18,7 +18,7 @@ def main():
 
     # Add wing sections sequentially
     piper.add_wing_section(
-        root_chord_length=71.6, tip_chord_length=65.5, section_span=27
+        root_chord_length=76.4, tip_chord_length=65.5, section_span=27
     )
     piper.add_wing_section(
         root_chord_length=65.5, tip_chord_length=65.5, section_span=56
@@ -137,7 +137,9 @@ def main():
         gamma_list.append(float(gamma))
     print("\n********** FLIGHT CLIMB DATA **********")
     print(f"\nRates of climb (meters per second): {dh_dt_list}")
-    print(f"\nClimb angles (degrees): {gamma_list}")
+    print(f"Max rate of climb (meters per second): {max(dh_dt_list)}")
+    print(f"Climb angles (degrees): {gamma_list}")
+    print(f"Max climb angle (degrees): {max(gamma_list)}")
 
     print("\n********** FLIGHT CRUISE DATA **********\n")
     rho_list = [1.1549, 1.1687, 1.1687, 1.1756, 1.1826]
