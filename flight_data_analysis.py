@@ -78,10 +78,6 @@ def main():
             acceptable_x.append(points[i][0])
             acceptable_y.append(points[i][1])
 
-    print(points)
-    print(point_distances)
-    print(good)
-
     # Linear fit data
     (slope, y_intercept), _ = curve_fit(linear_fit, acceptable_x, acceptable_y)
     x = np.linspace(min(velocity_4_list), max(velocity_4_list), 50)

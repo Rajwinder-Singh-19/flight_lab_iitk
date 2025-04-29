@@ -1,37 +1,46 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import os
 from scipy.optimize import curve_fit
 
 
-class Graph_1_Data:
-    def __init__(self, cg, cl_trim_list, delta_e_list):
-        self.cg = cg
-        self.cg_bar = self.cg / (1.49)
-        self.cl_trim_list = cl_trim_list
-        self.delta_e_list = delta_e_list
-        assert len(cl_trim_list) == len(delta_e_list)
-        (self.slope, _), _ = curve_fit(linear_fit, cl_trim_list, delta_e_list)
-
-
 def linear_fit(x, slope, intercept):
-    return slope * x + intercept
+    return x * slope + intercept
 
 
 def inverse_linear_fit(y, slope, intercept):
     return (y - intercept) / slope
 
 
-def main():
-    data_11 = Graph_1_Data(0.11, [0.3105, 0.3278, 0.3444], [2.9523, 2.667, -0.4953])
-    data_14 = Graph_1_Data(0.14, [0.4056, 0.4022, 0.4583], [1.7466, 1.8059, 1.1065])
-    data_23 = Graph_1_Data(0.23, [0.3476, 0.346, 0.3869], [3.1135, 2.696, 2.572])
+x_cg_bar = []
+d_elevator_d_cl = []
+with open(os.getcwd() + "/neutral_point_data.txt", "r") as f:
+    data = [list(map(float, line.strip().split())) for line in f.readlines()[1:]]
+print(data)
 
-    cg_bar_list = [data_11.cg_bar, data_14.cg_bar, data_23.cg_bar]
-    slope_list = [data_11.slope, data_14.slope, data_23.slope]
+for i in data:
+    x_cg_bar.append(i[0])
+    d_elevator_d_cl.append(i[1])
 
-    (slope, intercept), _ = curve_fit(linear_fit, cg_bar_list, slope_list)
+print(x_cg_bar)
+print(d_elevator_d_cl)
 
-    print(inverse_linear_fit(0, slope, intercept))
-
-
-if __name__ == "__main__":
-    main()
+(slope, intercept), _ = curve_fit(linear_fit, x_cg_bar, d_elevator_d_cl)
+neu_pt = inverse_linear_fit(0, slope, intercept)
+x = np.linspace(min(x_cg_bar), neu_pt + 0.1 * neu_pt)
+y = [linear_fit(x0, slope, intercept) for x0 in x]
+plt.plot(x_cg_bar, d_elevator_d_cl, "-o")
+plt.plot(x, y, "r--")
+plt.title("dDelta_dCl vs x_cg_bar", fontweight="bold")
+plt.xlabel("x_cg_bar", fontweight="bold")
+plt.ylabel("dDelta_dCl", fontweight="bold")
+plt.scatter(neu_pt, 0, c="k")
+plt.annotate(
+    f"Neutral Point: ({neu_pt}, 0)",
+    (neu_pt, 0),
+    (neu_pt * 0.98, -1.5),
+    arrowprops=dict(arrowstyle="->", color="k"),
+)
+plt.legend(["Original Data", "Linear Extrapolation", "Neutral Point Location"])
+plt.grid(True)
+plt.show()
